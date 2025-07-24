@@ -74,7 +74,39 @@ Usa --dns=8.8.8.8 para evitar problemas de resolução de nomes no Docker
       ```
 🐳 Compatibilidade
 
-✅ Linux
-✅ macOS (com Docker Desktop)
-✅ Windows WSL2
+✅ Linux <br>
+✅ macOS (com Docker Desktop) <br>
+✅ Windows WSL2 <br>
 
+<hr />
+🛠️ Passo a passo para "levantar" o projeto do zero com Docker, sem vendor:
+
+Clone o projeto e entre na pasta
+   ```bash
+      git clone https://github.com/usuario/seu-projeto.git
+      cd seu-projeto
+   ```
+
+Baixar as dependências PHP e Laravel Sail usando Docker diretamente
+ ```bash
+       docker run --rm \
+      --dns=8.8.8.8 \
+      -v $(pwd):/app \
+      -w /app \
+      laravelsail/php82-composer:latest \
+      composer install
+   ```
+Agora você já tem o Sail no vendor/bin/sail
+ 
+ ```bash
+   ./vendor/bin/sail up -d
+ ```
+
+ - Gerar a key:
+ ```bash
+   ./vendor/bin/sail artisan key:generate
+ ```
+ - Rodar migrations:
+ ```bash
+   ./vendor/bin/sail artisan key:generate
+ ```
